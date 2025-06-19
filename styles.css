@@ -1,15 +1,15 @@
 :root {
-    --primary-color: #f6e6bc;
-    --secondary-color: #ebcb8b;
-    --text-color: #2e3338;
-    --bg-color: #ffffff;
-    --nav-bg: rgba(255, 255, 255, 0.95);
-    --section-bg: #f6f6f7;
-    --card-bg: #ffffff;
-    --hover-bg: #f2f3f5;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --input-bg: #e3e5e8;
-    --input-text: #2e3338;
+    --primary-color: #ffd700;
+    --secondary-color: #c17900;
+    --text-color: #e4e4e4;
+    --bg-color: #121212;
+    --nav-bg: rgba(18, 18, 18, 0.95);
+    --section-bg: #1a1a1a;
+    --card-bg: #1e1e1e;
+    --hover-bg: #2a2a2a;
+    --shadow: rgba(0, 0, 0, 0.3);
+    --input-bg: #2c2c2c;
+    --input-text: #e4e4e4;
 }
 
 * {
@@ -147,12 +147,12 @@ a {
 .hero::before {
     content: '';
     position: absolute;
-    top: -100px;
-    right: -100px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
-    opacity: 0.1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 70% 70%, rgba(193, 121, 0, 0.05) 0%, transparent 60%);
     pointer-events: none;
 }
 
@@ -228,6 +228,22 @@ features {
     transition: transform 0.3s ease, background-color 0.3s ease;
     border: none;
     box-shadow: 0 4px 14px var(--shadow);
+}
+
+.card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), 
+                rgba(255, 215, 0, 0.07) 0%, 
+                transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.feature-card:hover .card-glow,
+.mission-card:hover .card-glow {
+    opacity: 1;
 }
 
 .feature-card:hover {
@@ -392,8 +408,11 @@ footer {
 
 
 footer {
-    background-color: var(--dark-accent);
-    border-top: 1px solid var(--primary-color);
+    background: linear-gradient(to bottom,
+        var(--section-bg) 0%,
+        var(--bg-color) 100%
+    );
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-content {
